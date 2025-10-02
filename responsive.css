@@ -311,3 +311,7 @@ button.rainbow.volver {
   color: #023e8a;
 }
 
+.tabla-items td {
+  color: #000 !important;
+}
+
