@@ -294,7 +294,7 @@ button.rainbow.volver {
 .tabla-items td.color-5,
 .tabla-items td.color-6 {
   font-weight: 600;
-  color: white;
+  color: black;
 }
 
 .tabla-pedidos thead tr {
@@ -310,3 +310,4 @@ button.rainbow.volver {
 .tabla-pedidos td.id a:hover {
   color: #023e8a;
 }
+
