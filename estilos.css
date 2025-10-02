@@ -779,3 +779,55 @@ td.id a:hover {
     font-size: 0.8rem;
   }
 }
+
+
+
+/* Botón para abrir filtros en móviles */
+.btn-toggle-filtros {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1100;
+  background-color: #5c2249;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+/* Offcanvas simulado */
+.nav-filtros.offcanvas {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100%;
+  background-color: #e7ebee;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 1050;
+  padding: 1rem;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+}
+
+.nav-filtros.offcanvas.open {
+  left: 0;
+}
+
+/* Mostrar botón en móviles */
+@media screen and (max-width: 768px) {
+  .btn-toggle-filtros {
+    display: block;
+  }
+
+  .nav-filtros {
+    display: none;
+  }
+
+  .nav-filtros.offcanvas {
+    display: block;
+  }
+}

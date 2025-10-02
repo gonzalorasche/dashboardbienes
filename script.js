@@ -341,6 +341,14 @@ document.getElementById('btnVolver').onclick = () => {
   document.getElementById('tablaPedidos').style.display = 'block';
 };
 
+const toggleBtn = document.getElementById('toggleFiltros');
+const filtros = document.querySelector('.nav-filtros');
+
+toggleBtn.addEventListener('click', () => {
+  filtros.classList.toggle('offcanvas');
+  filtros.classList.toggle('open');
+});
+
 
 // Inicializar al cargar
 window.onload = () => {
