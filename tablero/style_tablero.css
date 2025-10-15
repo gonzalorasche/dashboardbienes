@@ -1,0 +1,529 @@
+:root {
+  --bg: #f5f7fa;
+  --card-bg: #ffffff;
+  --text: #1f2937;
+  --radius: 10px;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --accent: #636060;
+  --accent-hover: #4f46e5;
+  --prioridad-alta: #ef4444;
+  --prioridad-media: #f59e0b;
+  --prioridad-baja: #10b981;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  max-height: 97vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔹 Header como barra horizontal */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--accent);
+  color: #e9b62a;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fcfcfc;
+}
+
+/* 🔹 Contenedor izquierdo: filtros + aplicar */
+.filtros-izquierda {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* 🔹 Contenedor derecho: borrar filtros */
+.filtros-derecha {
+  margin-left: auto;
+}
+
+/* 🔹 Ajustes generales de controles */
+select,
+input[type="text"],
+button {
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+}
+
+input[type="text"] {
+  border: 1px solid #ccc;
+}
+
+.estado-filtro label {
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+/* 🔹 Filtros y controles */
+.grupo-control,
+.estado-filtro,
+.campo-filtro,
+.botones-filtro {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+select,
+input[type="text"] {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #db8727;
+  color: white;
+  cursor: pointer;
+}
+
+.btnbase{
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #3389b1;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #e9b62a;
+}
+
+.estado-filtro label {
+  font-weight: normal;
+}
+
+/* 🔹 Tablero */
+.tablero {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 2rem;
+  align-items: flex-start;
+}
+
+/* 🔹 Columnas */
+.columna {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  padding: 1rem;
+  min-width: 280px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform 0.2s ease;
+  padding-top: 1rem;
+}
+
+.columna.dragging {
+  opacity: 0.5;
+}
+
+.columna h2 {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: inherit;
+  cursor: grab;
+  color: white;
+}
+
+/* 🔹 Tarjetas */
+.tarjeta {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: grab;
+  border-left: 6px solid var(--prioridad-media);
+}
+
+.tarjeta[data-prioridad="ALTA"] {
+  border-left-color: var(--prioridad-alta);
+}
+
+.tarjeta[data-prioridad="MEDIA"] {
+  border-left-color: var(--prioridad-media);
+}
+
+.tarjeta[data-prioridad="BAJA"] {
+  border-left-color: var(--prioridad-baja);
+}
+
+.tarjeta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px var(--shadow);
+}
+
+.tarjeta h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+.tarjeta p {
+  margin: 0.3rem 0;
+  font-size: 0.85rem;
+}
+
+.tarjeta button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.tarjeta button:hover {
+  background: var(--accent-hover);
+}
+
+/* 🔹 Modal de detalles */
+.detalle {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  min-width: 300px;
+  min-height: 300px;
+  max-height: 80vh;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  overflow-y: auto;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.detalle.oculto {
+  display: none;
+}
+
+.detalle table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.detalle th, .detalle td {
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+#volver {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+/* 🔹 Sello de etapa */
+.sello-etapa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgba(239, 68, 68, 0.15);
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 1;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* 🔹 Colores dinámicos por etapa */
+.sello-etapa[data-etapa="NO INICIADO"]              { color: rgba(107, 114, 128, 0.15); }
+.sello-etapa[data-etapa="ASIGNADO"]                 { color: rgba(59, 130, 246, 0.15); }
+.sello-etapa[data-etapa="RECEPCIÓN DE PRESUPUESTO"] { color: rgba(14, 165, 233, 0.15); }
+.sello-etapa[data-etapa="ADJUDICADO"]               { color: rgba(99, 102, 241, 0.15); }
+.sello-etapa[data-etapa="RECIBIDO"]                 { color: rgba(16, 185, 129, 0.15); }
+.sello-etapa[data-etapa="FACTURA ELEVADA"]          { color: rgba(245, 158, 11, 0.15); }
+.sello-etapa[data-etapa="PAGO POR ADELANTO"]        { color: rgba(249, 115, 22, 0.15); }
+.sello-etapa[data-etapa="ABONADO"]                  { color: rgba(34, 197, 94, 0.15); }
+.sello-etapa[data-etapa="CANCELADO"]                { color: rgba(239, 68, 68, 0.15); }
+
+/* 🔹 Colores por grupo */
+.grupo-no-iniciado h2              { background: #6b7280; }
+.grupo-asignado h2                 { background: #3b82f6; }
+.grupo-recepción-de-presupuesto h2{ background: #0ea5e9; }
+.grupo-adjudicado h2              { background: #6366f1; }
+.grupo-recibido h2                { background: #10b981; }
+.grupo-factura-elevada h2         { background: #f59e0b; }
+.grupo-pago-por-adelanto h2       { background: #f97316; }
+.grupo-abonado h2                 { background: #22c55e; }
+.grupo-cancelado h2               { background: #ef4444; }
+.grupo-sin-etapa h2               { background: #9ca3af; }
+
+.grupo-alta h2   { background: #ef4444; }
+.grupo-normal h2 { background: #f59e0b; }
+.grupo-baja h2   { background: #10b981; }
+
+.grupo-albañilería h2             { background: #909640; }
+.grupo-automotores h2             { background: #3b82f6; }
+.grupo-bazar-y-menaje h2          { background: #6366f1; }
+.grupo-carpintería h2             { background: #f59e0b; }
+.grupo-cerrajería h2              { background: #10b981; }
+.grupo-depósito-de-materiales h2  { background: #0ea5e9; }
+.grupo-electricidad h2            { background: #f97316; }
+.grupo-herrería h2                { background: #ef4444; }
+.grupo-lustradores h2             { background: #22c55e; }
+.grupo-otros h2                   { background: #6b7280; }
+.grupo-pinturería h2              { background: #3b82f6; }
+.grupo-pintores-duco h2           { background: #6366f1; }
+.grupo-plomería h2                { background: #10b981; }
+.grupo-sala-de-máquinas h2        { background: #aa1872; }
+.grupo-tapicería h2               { background: #0ea5e9; }
+.grupo-tornería h2                { background: #f97316; }
+.grupo-vidriería h2               { background: #ef4444; }
+
+.detalle.oculto {
+  display: none;
+}
+
+
+
+
+
+/* 🔹 Responsive general para pantallas menores a 768px */
+@media (max-width: 768px) {
+  /* 🔹 Header compacto */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem 1rem;
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  .filtros-izquierda,
+  .filtros-derecha,
+  .grupo-control,
+  .estado-filtro,
+  .campo-filtro,
+  .botones-filtro {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  select,
+  input[type="text"],
+  button,
+  .btnbase {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  /* 🔹 Tablero horizontal con scroll lateral */
+  .tablero {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1rem;
+    gap: 1rem;
+    max-height: calc(100vh - 120px); /* ajusta según altura del header */
+  }
+
+  /* 🔹 Columnas con scroll vertical interno */
+  .columna {
+    min-width: 280px;
+    max-width: 90vw;
+    max-height: 75vh;
+    overflow-y: auto;
+    padding: 1rem;
+    word-break: break-word;
+  }
+
+  .columna h2 {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  .tarjeta {
+    margin-bottom: 1rem;
+  }
+
+  /* 🔹 Modal adaptado */
+  .detalle {
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    width: auto;
+    max-height: 90vh;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .detalle table {
+    font-size: 0.85rem;
+  }
+
+  #volver {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .sello-etapa {
+    font-size: 2rem;
+  }
+
+  header,
+  .tablero,
+  .detalle {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1rem;
+  }
+
+  .detalle {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .detalle table {
+    font-size: 0.8rem;
+  }
+
+  .sello-etapa {
+    font-size: 1.5rem;
+  }
+
+  .tarjeta h3 {
+    font-size: 0.95rem;
+  }
+
+  .tarjeta p {
+    font-size: 0.75rem;
+  }
+
+  .tarjeta button {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* 🔹 Scroll suave y prevención de desbordes */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  /* 🔹 Asegura que todos los controles ocupen el mismo ancho */
+  .grupo-control > *,
+  .estado-filtro > *,
+  .campo-filtro > *,
+  .botones-filtro > * {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  select,
+  input[type="text"],
+  button,
+  .btnbase {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 🔹 Tablero con scroll horizontal, sin limitar altura */
+  .tablero {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible; /* ✅ permite que las columnas crezcan verticalmente */
+    padding: 1rem;
+    gap: 1rem;
+    height: auto; /* ✅ elimina restricciones de altura */
+  }
+
+  /* 🔹 Columnas con scroll vertical interno */
+  .columna {
+    min-width: 280px;
+    max-width: 90vw;
+    max-height: none; /* ✅ permite que crezcan según contenido */
+    overflow-y: auto;
+    padding: 1rem;
+    word-break: break-word;
+  }
+
+  /* 🔹 Asegura que el body permita scroll vertical completo */
+  body {
+    overflow-y: auto;
+  }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tablero de Pedidos</title>
+  <link rel="stylesheet" href="style_tablero.css" />
+</head>
+<body>
+  <header>
+  <h1>Tablero de Pedidos | </h1>
+
+  <div class="filtros-izquierda">
+    <div class="grupo-control">
+      <label for="ordenar">Agrupar por:</label>
+      <select id="ordenar">
+        <option value="RUBRO">Taller</option>
+        <option value="ETAPA">Etapa</option>
+        <option value="PRIORIDAD">Prioridad</option>
+      </select>
+    </div>
+
+    <div class="estado-filtro">
+      <label><input type="checkbox" id="filtroPendientes" /> Pendientes</label>
+      <label><input type="checkbox" id="filtroFinalizados" /> Finalizados</label>
+    </div>
+
+    <div class="campo-filtro">
+      <input type="text" id="buscarItem" placeholder="Buscar en ítems..." />
+    </div>
+
+    <div class="campo-filtro">
+      <input type="text" id="buscarLugar" placeholder="Buscar por lugar..." />
+    </div>
+
+    <div class="botones-filtro">
+      <button id="btnBuscar">APLICAR</button>
+      <button id="btnLimpiar">BORRAR FILTROS</button>
+    </div>
+  </div>
+
+<div class="filtros-derecha">
+  <a href="../index.html" class="btnbase">IR A BASE</a>
+</div>
+
+</header>
+
+
+
+  <main id="tablero" class="tablero"></main>
+
+
+  <!-- MODAL flotante de detalles, fuera del flujo principal -->
+  <div id="detalle" class="detalle oculto">
+    <button id="volver">⬅ Volver</button>
+    <h2 id="titulo-detalle">Detalles del Pedido</h2>
+    <p id="codigo-pedido" class="codigo-pedido"></p>
+    <div id="etapa-sello" class="sello-etapa"></div>
+    <div id="detalle-body"></div>
+  </div>
+
+
+    <script src="pedidos.js"></script>
+    <script src="script_tablero.js"></script>
+</body>
+</html>
