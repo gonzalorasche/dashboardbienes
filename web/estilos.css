@@ -1,0 +1,830 @@
+/* Fuente base */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* NAV principal */
+#nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #e7ebee;
+  height: 7vw;
+}
+
+.nav-titulo h1 {
+  margin: 0 0 1rem 0;
+  padding-left: 15px;
+  padding-top: 10px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+}
+
+/* Filtros en línea */
+.nav-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  padding-left: 15px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+}
+
+.filter-group label {
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+
+.filter-group select,
+.filter-group input {
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* Botones */
+button.rainbow {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.teal {
+  background-color: #e75c73;
+  color: white;
+}
+
+button.ir {
+  background-color: #eeac33;
+  color: white;
+}
+
+button.grafico {
+  background-color: #b14c97;
+  color: white;
+}
+
+button.gray {
+  background-color: #666;
+  color: white;
+}
+
+/* Contador */
+.barra_nav_sec {
+  padding: 0.5rem 2rem;
+  background-color: #5c2249;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+}
+
+.contador_nav_sec {
+  font-size: 1rem;
+}
+
+.etiqueta_nav_sec {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.valor_nav_sec {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Tabla de pedidos */
+/* Contenedor tipo container */
+#tablaPedidos {
+  max-width: 100%; /* Limita el ancho total */
+  margin: 0 auto;    /* Centra el contenido */
+  padding: 1rem;
+  overflow-x: hidden;
+}
+
+/* Tabla interna */
+#tablaPedidos table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+/* Celdas */
+#tablaPedidos th,
+#tablaPedidos td {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 0.85rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Encabezado */
+#tablaPedidos th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+/* Columnas compactas */
+#tablaPedidos th:nth-child(1),
+#tablaPedidos td:nth-child(1) { width: 80px; }   /* ID */
+#tablaPedidos th:nth-child(2),
+#tablaPedidos td:nth-child(2) { width: 100px; }  /* Fecha */
+#tablaPedidos th:nth-child(3),
+#tablaPedidos td:nth-child(3) { width: 90px; }   /* Prioridad */
+#tablaPedidos th:nth-child(4),
+#tablaPedidos td:nth-child(4) { width: 120px; }  /* Taller */
+#tablaPedidos th:nth-child(8),
+#tablaPedidos td:nth-child(8) { width: 90px; }   /* Asignación */
+#tablaPedidos th:nth-child(9),
+#tablaPedidos td:nth-child(9) { width: 90px; }   /* Estado */
+#tablaPedidos th:nth-child(10),
+#tablaPedidos td:nth-child(10) { width: 90px; }  /* Días */
+#tablaPedidos th:nth-child(5),
+#tablaPedidos td:nth-child(5) { width: 250px; }  /* Etapa */
+#tablaPedidos th:nth-child(6),
+#tablaPedidos td:nth-child(6) { width: 150px; }  /* Para usar en */
+#tablaPedidos th:nth-child(7),
+#tablaPedidos td:nth-child(7) { width: 150px; }  /* agente */
+
+
+
+/* Estilos por prioridad */
+.prioridad-alta {
+  background-color: #ffdddd;
+  color: #a00;
+  font-weight: bold;
+}
+
+.prioridad-normal {
+  background-color: #fff8cc;
+  color: #996600;
+}
+
+.prioridad-baja {
+  background-color: #ddffdd;
+  color: #006600;
+}
+
+/* ID resaltado */
+td.id {
+  font-weight: bold;
+  color: #007b7f;
+}
+
+/* Agrupación horizontal de botones */
+.filter-group-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+/* NUEVA SECCIÓN: Detalle del pedido */
+.grid-detalle {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+.bloque {
+  background-color: #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  min-height: 150px;
+}
+
+.bloque-1 { background-color: #fce4ec; }
+.bloque-2 { background-color: #e3e3e3; }
+.bloque-3 { background-color: #e8f5e9; }
+.bloque-4 { background-color: #fff3e0; }
+
+.bloque-items {
+  grid-row: span 2;
+  background-color: #ffffff;
+  border: 2px solid #e3e3e3;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow-x: auto;
+}
+
+.bloque-items h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #000000;
+}
+
+/* Tabla de ítems del pedido */
+.tabla-items {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
+.tabla-items th,
+.tabla-items td {
+  padding: 0.3rem 0.4rem;
+  border: 1px solid #ccc;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.2;
+}
+
+/* Encabezado */
+.tabla-items th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+/* CANTIDAD columna fija */
+.tabla-items th:nth-child(1),
+.tabla-items td:nth-child(1) {
+  width: 85px;
+}
+
+/* BLOQUE 1 - Resumen del pedido */
+#resumenPedido {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #fefefe;
+  border: 2px solid #e3e3e3;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+#resumenPedido .id {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #5c2249;
+  margin-bottom: 0.5rem;
+}
+
+#resumenPedido .dato {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+#resumenPedido .dato span:first-child {
+  font-weight: 600;
+  color: #666;
+}
+
+
+
+
+
+
+/* BLOQUE 3 - Empresas cotizadas */
+#empresasCotizadas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #fefefe;
+  border: 2px solid #e3e3e3;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+#empresasCotizadas h3 {
+  font-size: 1 rem;
+  font-weight: 700;
+  color: #eeb518;
+  margin-bottom: 0.5rem;
+}
+
+#empresasCotizadas ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+#empresasCotizadas li {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.5rem;
+  border-bottom: 1px solid #e3e3e3;
+  color: #333;
+}
+
+#empresasCotizadas li:last-child {
+  border-bottom: none;
+}
+
+
+
+
+
+/* BLOQUE 4 - Empresas adjudicadas (igual que cotizadas) */
+#adjudicaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #fefefe;
+  border: 2px solid #e3e3e3;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+#adjudicaciones h3 {
+  font-size: 1 rem;
+  font-weight: 700;
+  color: #eeb518;
+  margin-bottom: 0.5rem;
+}
+
+#adjudicaciones ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+#adjudicaciones li {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.5rem;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+#adjudicaciones li:last-child {
+  border-bottom: none;
+}
+
+/* Cuadradito de color delante del nombre */
+.adjudicacion-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+
+/* Color box delante del nombre */
+.adjudicacion-color {
+  width: 16px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+
+.adjudicacion-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Colores suaves para empresas (se asignan dinámicamente) */
+.color-0 { background-color: #f8c291; }
+.color-1 { background-color: #82ccdd; }
+.color-2 { background-color: #b8e994; }
+.color-3 { background-color: #f6b93b; }
+.color-4 { background-color: #60a3bc; }
+.color-5 { background-color: #78e08f; }
+.color-6 { background-color: #e55039; }
+
+
+/* Pintado de ítems */
+.tabla-items td.color-0,
+.tabla-items td.color-1,
+.tabla-items td.color-2,
+.tabla-items td.color-3,
+.tabla-items td.color-4,
+.tabla-items td.color-5,
+.tabla-items td.color-6 {
+  background-color: inherit; /* fallback */
+}
+
+
+
+
+
+/* BLOQUE 5 - Comentarios del pedido */
+#comentariosPedido {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #fefefe;
+  border: 2px solid #e3e3e3;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+#comentariosPedido h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #eeb518;
+  margin-bottom: 0.5rem;
+}
+
+#comentariosPedido .contenido {
+  font-size: 0.85rem;
+  color: #333;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  line-height: 1.4;
+}
+
+
+
+.dropdown-checkbox {
+  position: relative;
+}
+
+.dropdown-toggle {
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+  min-width: 250px;
+  width: max-content;
+
+}
+
+.dropdown-checkbox.open .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+
+.etapa-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.etapa-actions button {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border: none;
+  background-color: #e7ebee;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.rainbow.volver {
+  display: inline-block;
+  max-width: 200px;
+  max-height: 50px;
+  padding: 8px 16px;
+  font-weight: bold;
+  background-color: #504f4f;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+td.id a {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+td.id a:hover {
+  color: #e75c73;
+}
+
+
+
+
+/* RESPONSIVE: pantallas menores a 1024px */
+@media screen and (max-width: 1024px) {
+  .nav-filtros {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .filter-group {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .filter-group-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dropdown-toggle {
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-height: 300px;
+  }
+
+  .etapa-actions {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .etapa-actions button {
+    width: 100%;
+  }
+
+  .barra_nav_sec {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  #tablaPedidos {
+    padding: 0.5rem;
+    overflow-x: auto;
+  }
+
+  #tablaPedidos table {
+    font-size: 0.75rem;
+  }
+
+  .grid-detalle {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .bloque-items {
+    order: -1;
+    grid-row: unset;
+  }
+
+  .bloque {
+    min-height: unset;
+  }
+
+  #resumenPedido .id {
+    font-size: 2rem;
+  }
+
+  .tabla-items {
+    font-size: 0.75rem;
+  }
+
+  .tabla-items th:nth-child(1),
+  .tabla-items td:nth-child(1) {
+    width: 70px;
+  }
+}
+
+/* RESPONSIVE: pantallas menores a 1024px */
+@media screen and (max-width: 1090px) {
+  /* NAV principal */
+  #nav {
+    position: relative;
+    background-color: #ffffff;
+    height: auto;
+    padding-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  body {
+    padding-top: 0; /* ya no es sticky */
+  }
+
+  .nav-titulo h1 {
+    font-size: 1.4rem;
+    padding-top: 8px;
+    padding-left: 10px;
+  }
+
+  .nav-filtros {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .filter-group {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .filter-group-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dropdown-toggle {
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-height: 300px;
+  }
+
+  .etapa-actions {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .etapa-actions button {
+    width: 100%;
+  }
+
+  .barra_nav_sec {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  #tablaPedidos {
+    padding: 0.5rem;
+    overflow-x: auto;
+  }
+
+  #tablaPedidos table {
+    font-size: 0.75rem;
+  }
+
+  /* BLOQUES DE DETALLE */
+  .grid-detalle {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .bloque-items {
+    order: -1;
+    grid-row: unset;
+  }
+
+  .bloque {
+    min-height: unset;
+  }
+
+  #resumenPedido .id {
+    font-size: 2rem;
+  }
+
+  .tabla-items {
+    font-size: 0.75rem;
+  }
+
+  .tabla-items th:nth-child(1),
+  .tabla-items td:nth-child(1) {
+    width: 70px;
+  }
+}
+
+/* RESPONSIVE: pantallas menores a 600px */
+@media screen and (max-width: 600px) {
+  .nav-titulo h1 {
+    font-size: 1.2rem;
+    padding-top: 5px;
+  }
+
+  button.rainbow {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .dropdown-menu label {
+    font-size: 0.8rem;
+  }
+
+  #resumenPedido .dato {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #resumenPedido .id {
+    font-size: 1.6rem;
+  }
+
+  .bloque-items h2 {
+    font-size: 1rem;
+  }
+
+  .tabla-items th,
+  .tabla-items td {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.3rem;
+  }
+
+  .bloque {
+    padding: 0.8rem;
+  }
+
+  #comentariosPedido .contenido {
+    font-size: 0.8rem;
+  }
+}
+
+.cancelado-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  z-index: 10;
+  padding: 20px 40px;
+  font-size: 48px;
+  font-weight: bold;
+  color: red;
+  background-color: rgba(255, 255, 255, 0.6); /* blanco con transparencia */
+  border: 4px solid red;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  pointer-events: none;
+  text-align: center;
+  mix-blend-mode: multiply;
+}
+
+#detallePedido {
+  position: relative;
+}
+
+/* Aplica estilos rainbow a <button> y <a> */
+button.rainbow,
+a.rainbow {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Aplica estilos ir a <button> y <a> */
+button.ir,
+a.ir {
+  background-color: #eeac33;
+  color: white;
+  text-align: center;
+}
+
+#btnTablero {
+  background-color: #b43977;
+}
+

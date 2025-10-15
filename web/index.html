@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard de Pedidos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+<body>
+    
+  <nav id="nav">
+    <div class="nav-titulo">
+      <h1>BIENES 2.0 TALLERES | CASA CENTRAL</h1>
+    </div>
+
+    <div class="nav-filtros">
+      <div class="filter-group">
+        <label for="estado">ESTADO:</label>
+        <select id="estado">
+          <option>TODOS</option>
+          <option>PENDIENTE</option>
+          <option>FINALIZADO</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="asignacion">ASIGNACIÓN:</label>
+        <select id="asignacion">
+          <option>TODOS</option>
+          <option>ASIGNADO</option>
+          <option>SIN ASIGNAR</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="taller">TALLER:</label>
+        <select id="taller">
+          <option>TODOS</option>
+          <option>ALBAÑILERÍA</option>
+          <option>AUTOMOTORES</option>
+          <option>BAZAR Y MENAJE</option>
+          <option>CARPINTERÍA</option>
+          <option>CERRAJERÍA</option>
+          <option>DEPÓSITO DE MATERIALES</option>
+          <option>ELECTRICIDAD</option>
+          <option>HERRERÍA</option>
+          <option>LUSTRADORES</option>
+          <option>OTROS</option>
+          <option>PINTURERÍA</option>
+          <option>PINTORES DUCO</option>
+          <option>PLOMERÍA</option>
+          <option>SALA DE MÁQUINAS</option>
+          <option>TAPICERÍA</option>
+          <option>TORNERÍA</option>
+          <option>VIDRIERÍA</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="prioridad">PRIORIDAD:</label>
+        <select id="prioridad">
+          <option>TODOS</option>
+          <option>ALTA</option>
+          <option>NORMAL</option>
+          <option>BAJA</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="agente">AGENTE:</label>
+        <select id="agente">
+          <option>TODOS</option>
+          <option>RASCHELLA GONZALO</option>
+          <option>LISTORTI COLACCHIO GABRIEL</option>
+          <option>TRAVASSI MARIANO IGNACIO</option>
+          <option>OGLIALORO ARIEL SEBASTIÁN</option>
+          <option>PALAVECINO CAPICI LUCÍA</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>ETAPA:</label>
+        <div class="dropdown-checkbox" id="etapaDropdown">
+          <button class="dropdown-toggle" type="button">Seleccionar etapas</button>
+          <div class="dropdown-menu">
+            <div class="etapa-actions">
+              <button type="button" id="marcarTodasEtapas">Marcar todas</button>
+              <button type="button" id="desmarcarTodasEtapas">Desmarcar todas</button>
+            </div>
+            <label><input type="checkbox" value="NO INICIADO" checked> NO INICIADO</label>
+            <label><input type="checkbox" value="ASIGNADO" checked> ASIGNADO</label>
+            <label><input type="checkbox" value="RECEPCIÓN DE PRESUPUESTO" checked> RECEPCIÓN DE PRESUPUESTO</label>
+            <label><input type="checkbox" value="ADJUDICADO" checked> ADJUDICADO</label>
+            <label><input type="checkbox" value="RECIBIDO" checked> RECIBIDO</label>
+            <label><input type="checkbox" value="FACTURA ELEVADA" checked> FACTURA ELEVADA</label>
+            <label><input type="checkbox" value="PAGO POR ADELANTO" checked> PAGO POR ADELANTO</label>
+            <label><input type="checkbox" value="ABONADO" checked> ABONADO</label>
+            <label><input type="checkbox" value="CANCELADO" checked> CANCELADO</label>
+          </div>
+        </div>
+      </div>        
+
+      <div class="filter-group filter-group-buttons">
+        <button class="rainbow teal" id="btnFiltrar">APLICAR FILTRO</button>
+        <button class="rainbow gray" id="btnLimpiar">BORRAR FILTRO</button>
+      </div>   
+
+      <div class="filter-group">
+        <label for="buscar">Pedido:</label>
+        <input type="text" id="buscar" placeholder="N° de Pedido...">
+      </div>
+
+      <div class="filter-group filter-group-buttons">
+        <button class="rainbow ir" id="btnPedido">IR</button>
+        <a href="./tablero/index_tablero.html" class="rainbow ir" id="btnTablero">TABLERO</a>
+      </div>
+
+
+    </div>
+  </nav>
+
+  <nav class="barra_nav_sec">
+    <div class="contador_nav_sec">
+      <span class="etiqueta_nav_sec">Cantidad de pedidos en este filtro:</span>
+      <span class="valor_nav_sec" id="contadorPendientes">0</span>
+    </div>
+  </nav>
+
+  <!-- Tabla de pedidos -->
+  <div id="tablaPedidos"></div>
+
+  <!-- Secciones de detalle del pedido -->
+  <div id="seccionesPedido" style="display: none;">
+    <div class="grid-detalle">
+      <div class="bloque bloque-1" id="resumenPedido">
+      <!-- El contenido se genera dinámicamente con JS -->
+      </div>
+
+      <div class="bloque bloque-5" id="comentariosPedido">
+        <!-- Comentarios del pedido -->
+      </div>
+
+      <div class="bloque bloque-items" id="detallePedido"></div>
+      <div class="bloque bloque-3" id="empresasCotizadas">
+        <!-- Contenido generado dinámicamente -->
+      </div>
+
+      <div class="bloque bloque-4" id="adjudicaciones">
+      <!-- Contenido generado dinámicamente -->
+    </div>
+
+    <button id="btnVolver" class="rainbow volver">← VOLVER A LA LISTA</button>
+    
+
+    </div>
+  </div>
+
+  <script src="pedidos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
